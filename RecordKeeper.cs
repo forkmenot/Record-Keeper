@@ -6,15 +6,15 @@ using System.Windows.Forms;
 using GemBox.Spreadsheet;
 using GemBox.Spreadsheet.WinFormsUtilities;
 
-namespace StudentManagement
+namespace RecordKeeper
 {
-    public partial class StudentManagement : Form
+    public partial class RecordKeeper : Form
     {
         private DataTable profileTable;
         private List<List<string>> accountTable;
         private List<string> accountHeaders;
 
-        public StudentManagement()
+        public RecordKeeper()
         {
             InitializeComponent();
             SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
@@ -25,28 +25,28 @@ namespace StudentManagement
         private void InitializeTables()
         {
             profileTable = new DataTable();
-            dgvProfile.DataSource = profileTable;
+            dgvRA.DataSource = profileTable;
 
             accountTable = new List<List<string>>();
             accountHeaders = new List<string>();
-            dgvAccount.ColumnCount = 0;
+            dgvRB.ColumnCount = 0;
         }
 
         private void SetDataGridViewStyles()
         {
-            dgvProfile.DefaultCellStyle.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular);
-            dgvProfile.ColumnHeadersDefaultCellStyle.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
+            dgvRA.DefaultCellStyle.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular);
+            dgvRA.ColumnHeadersDefaultCellStyle.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
 
-            dgvAccount.DefaultCellStyle.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular);
-            dgvAccount.ColumnHeadersDefaultCellStyle.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
+            dgvRB.DefaultCellStyle.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular);
+            dgvRB.ColumnHeadersDefaultCellStyle.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
         }
 
-        private void paROW_Click(object sender, EventArgs e)
+        private void aaROW_Click(object sender, EventArgs e)
         {
             profileTable.Rows.Add(profileTable.NewRow());
         }
 
-        private void paCOL_Click(object sender, EventArgs e)
+        private void aaCOL_Click(object sender, EventArgs e)
         {
             string headerName = InputDialog.ShowDialog("Enter column header name:");
             if (headerName != null)
@@ -69,11 +69,11 @@ namespace StudentManagement
             }
         }
 
-        private void pdROW_Click(object sender, EventArgs e)
+        private void adROW_Click(object sender, EventArgs e)
         {
-            if (dgvProfile.SelectedCells.Count > 0)
+            if (dgvRA.SelectedCells.Count > 0)
             {
-                int rowIndex = dgvProfile.SelectedCells[0].RowIndex;
+                int rowIndex = dgvRA.SelectedCells[0].RowIndex;
                 if (rowIndex >= 0 && rowIndex < profileTable.Rows.Count)
                 {
                     profileTable.Rows.RemoveAt(rowIndex);
@@ -81,11 +81,11 @@ namespace StudentManagement
             }
         }
 
-        private void pdCOL_Click(object sender, EventArgs e)
+        private void adCOL_Click(object sender, EventArgs e)
         {
-            if (dgvProfile.SelectedCells.Count > 0)
+            if (dgvRA.SelectedCells.Count > 0)
             {
-                int colIndex = dgvProfile.SelectedCells[0].ColumnIndex;
+                int colIndex = dgvRA.SelectedCells[0].ColumnIndex;
                 if (colIndex >= 0 && colIndex < profileTable.Columns.Count)
                 {
                     profileTable.Columns.RemoveAt(colIndex);
@@ -93,13 +93,13 @@ namespace StudentManagement
             }
         }
 
-        private void aaROW_Click(object sender, EventArgs e)
+        private void baROW_Click(object sender, EventArgs e)
         {
-            accountTable.Add(new List<string>(new string[dgvAccount.ColumnCount]));
-            dgvAccount.Rows.Add();
+            accountTable.Add(new List<string>(new string[dgvRB.ColumnCount]));
+            dgvRB.Rows.Add();
         }
 
-        private void aaCOL_Click(object sender, EventArgs e)
+        private void baCOL_Click(object sender, EventArgs e)
         {
             string headerName = InputDialog.ShowDialog("Enter column header name:");
             if (headerName != null)
@@ -109,7 +109,7 @@ namespace StudentManagement
                     if (!accountHeaders.Contains(headerName))
                     {
                         accountHeaders.Add(headerName);
-                        dgvAccount.Columns.Add(headerName, headerName);
+                        dgvRB.Columns.Add(headerName, headerName);
                         foreach (var row in accountTable)
                         {
                             row.Add("");
@@ -127,28 +127,28 @@ namespace StudentManagement
             }
         }
 
-        private void adROW_Click(object sender, EventArgs e)
+        private void bdROW_Click(object sender, EventArgs e)
         {
-            if (dgvAccount.SelectedCells.Count > 0)
+            if (dgvRB.SelectedCells.Count > 0)
             {
-                int rowIndex = dgvAccount.SelectedCells[0].RowIndex;
+                int rowIndex = dgvRB.SelectedCells[0].RowIndex;
                 if (rowIndex >= 0 && rowIndex < accountTable.Count)
                 {
                     accountTable.RemoveAt(rowIndex);
-                    dgvAccount.Rows.RemoveAt(rowIndex);
+                    dgvRB.Rows.RemoveAt(rowIndex);
                 }
             }
         }
 
-        private void adCOL_Click(object sender, EventArgs e)
+        private void bdCOL_Click(object sender, EventArgs e)
         {
-            if (dgvAccount.SelectedCells.Count > 0)
+            if (dgvRB.SelectedCells.Count > 0)
             {
-                int colIndex = dgvAccount.SelectedCells[0].ColumnIndex;
+                int colIndex = dgvRB.SelectedCells[0].ColumnIndex;
                 if (colIndex >= 0 && colIndex < accountHeaders.Count)
                 {
                     accountHeaders.RemoveAt(colIndex);
-                    dgvAccount.Columns.RemoveAt(colIndex);
+                    dgvRB.Columns.RemoveAt(colIndex);
                     foreach (var row in accountTable)
                     {
                         if (row.Count > colIndex)
@@ -158,7 +158,7 @@ namespace StudentManagement
             }
         }
 
-        private void flProfile_Click(object sender, EventArgs e)
+        private void flRA_Click(object sender, EventArgs e)
         {
             var openFileDialog = new OpenFileDialog();
             openFileDialog.Filter =
@@ -177,11 +177,11 @@ namespace StudentManagement
 
                 profileTable = worksheet.CreateDataTable(new CreateDataTableOptions() { ColumnHeaders = true });
 
-                dgvProfile.DataSource = profileTable;
+                dgvRA.DataSource = profileTable;
             }
         }
 
-        private void flAccount_Click(object sender, EventArgs e)
+        private void flRB_Click(object sender, EventArgs e)
         {
             var openFileDialog = new OpenFileDialog();
             openFileDialog.Filter =
@@ -200,14 +200,14 @@ namespace StudentManagement
 
                 accountHeaders.Clear();
                 accountTable.Clear();
-                dgvAccount.Rows.Clear();
-                dgvAccount.Columns.Clear();
+                dgvRB.Rows.Clear();
+                dgvRB.Columns.Clear();
 
                 foreach (var cell in worksheet.Rows[0].AllocatedCells)
                 {
                     string headerText = cell.Value?.ToString() ?? "";
                     accountHeaders.Add(headerText);
-                    dgvAccount.Columns.Add(headerText, headerText);
+                    dgvRB.Columns.Add(headerText, headerText);
                 }
 
                 for (int i = 1; i < worksheet.Rows.Count; i++)
@@ -218,12 +218,12 @@ namespace StudentManagement
                         rowData.Add(cell.Value?.ToString() ?? "");
                     }
                     accountTable.Add(rowData);
-                    dgvAccount.Rows.Add(rowData.ToArray());
+                    dgvRB.Rows.Add(rowData.ToArray());
                 }
             }
         }
 
-        private void fsProfile_Click(object sender, EventArgs e)
+        private void fsRA_Click(object sender, EventArgs e)
         {
             var saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter =
@@ -257,14 +257,14 @@ namespace StudentManagement
 
                 DataGridViewConverter.ImportFromDataGridView(
                     worksheet,
-                    this.dgvProfile,
+                    this.dgvRA,
                     new ImportFromDataGridViewOptions() { ColumnHeaders = true });
 
                 workbook.Save(saveFileDialog.FileName);
             }
         }
 
-        private void fsAccount_Click(object sender, EventArgs e)
+        private void fsRB_Click(object sender, EventArgs e)
         {
             var saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter =
@@ -298,7 +298,7 @@ namespace StudentManagement
 
                 DataGridViewConverter.ImportFromDataGridView(
                     worksheet,
-                    this.dgvAccount,
+                    this.dgvRB,
                     new ImportFromDataGridViewOptions() { ColumnHeaders = true });
 
                 workbook.Save(saveFileDialog.FileName);
