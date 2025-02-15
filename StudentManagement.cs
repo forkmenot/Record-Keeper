@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Media.Effects;
 using GemBox.Spreadsheet;
 using GemBox.Spreadsheet.WinFormsUtilities;
 
@@ -176,10 +175,7 @@ namespace StudentManagement
                 var workbook = ExcelFile.Load(openFileDialog.FileName);
                 var worksheet = workbook.Worksheets.ActiveWorksheet;
 
-                profileTable = worksheet.CreateDataTable(new CreateDataTableOptions()
-                {
-                    ColumnHeaders = true
-                });
+                profileTable = worksheet.CreateDataTable(new CreateDataTableOptions() { ColumnHeaders = true });
 
                 dgvProfile.DataSource = profileTable;
             }
@@ -229,12 +225,84 @@ namespace StudentManagement
 
         private void fsProfile_Click(object sender, EventArgs e)
         {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter =
+                "XLS (*.xls)|*.xls|" +
+                "XLT (*.xlt)|*.xlt|" +
+                "XLSX (*.xlsx)|*.xlsx|" +
+                "XLSM (*.xlsm)|*.xlsm|" +
+                "XLTX (*.xltx)|*.xltx|" +
+                "XLTM (*.xltm)|*.xltm|" +
+                "ODS (*.ods)|*.ods|" +
+                "OTS (*.ots)|*.ots|" +
+                "CSV (*.csv)|*.csv|" +
+                "TSV (*.tsv)|*.tsv|" +
+                "HTML (*.html)|*.html|" +
+                "MHTML (*.mhtml)|*.mhtml|" +
+                "PDF (*.pdf)|*.pdf|" +
+                "XPS (*.xps)|*.xps|" +
+                "BMP (*.bmp)|*.bmp|" +
+                "GIF (*.gif)|*.gif|" +
+                "JPEG (*.jpg)|*.jpg|" +
+                "PNG (*.png)|*.png|" +
+                "TIFF (*.tif)|*.tif|" +
+                "WMP (*.wdp)|*.wdp";
 
+            saveFileDialog.FilterIndex = 3;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var workbook = new ExcelFile();
+                var worksheet = workbook.Worksheets.Add("Sheet1");
+
+                DataGridViewConverter.ImportFromDataGridView(
+                    worksheet,
+                    this.dgvProfile,
+                    new ImportFromDataGridViewOptions() { ColumnHeaders = true });
+
+                workbook.Save(saveFileDialog.FileName);
+            }
         }
 
         private void fsAccount_Click(object sender, EventArgs e)
         {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter =
+                "XLS (*.xls)|*.xls|" +
+                "XLT (*.xlt)|*.xlt|" +
+                "XLSX (*.xlsx)|*.xlsx|" +
+                "XLSM (*.xlsm)|*.xlsm|" +
+                "XLTX (*.xltx)|*.xltx|" +
+                "XLTM (*.xltm)|*.xltm|" +
+                "ODS (*.ods)|*.ods|" +
+                "OTS (*.ots)|*.ots|" +
+                "CSV (*.csv)|*.csv|" +
+                "TSV (*.tsv)|*.tsv|" +
+                "HTML (*.html)|*.html|" +
+                "MHTML (*.mhtml)|*.mhtml|" +
+                "PDF (*.pdf)|*.pdf|" +
+                "XPS (*.xps)|*.xps|" +
+                "BMP (*.bmp)|*.bmp|" +
+                "GIF (*.gif)|*.gif|" +
+                "JPEG (*.jpg)|*.jpg|" +
+                "PNG (*.png)|*.png|" +
+                "TIFF (*.tif)|*.tif|" +
+                "WMP (*.wdp)|*.wdp";
 
+            saveFileDialog.FilterIndex = 3;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var workbook = new ExcelFile();
+                var worksheet = workbook.Worksheets.Add("Sheet1");
+
+                DataGridViewConverter.ImportFromDataGridView(
+                    worksheet,
+                    this.dgvAccount,
+                    new ImportFromDataGridViewOptions() { ColumnHeaders = true });
+
+                workbook.Save(saveFileDialog.FileName);
+            }
         }
     }
 
