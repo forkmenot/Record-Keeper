@@ -59,6 +59,10 @@
             adROW = new ToolStripMenuItem();
             adCOL = new ToolStripMenuItem();
             lblAccount = new Label();
+            flProfile = new ToolStripMenuItem();
+            flAccount = new ToolStripMenuItem();
+            fsProfile = new ToolStripMenuItem();
+            fsAccount = new ToolStripMenuItem();
             mstrpSM.SuspendLayout();
             panelSM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)spltcPanel).BeginInit();
@@ -92,14 +96,16 @@
             // 
             // loadToolStripMenuItem
             // 
+            loadToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { flProfile, flAccount });
             loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            loadToolStripMenuItem.Size = new Size(106, 24);
+            loadToolStripMenuItem.Size = new Size(180, 24);
             loadToolStripMenuItem.Text = "Load";
             // 
             // saveToolStripMenuItem
             // 
+            saveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { fsProfile, fsAccount });
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(106, 24);
+            saveToolStripMenuItem.Size = new Size(180, 24);
             saveToolStripMenuItem.Text = "Save";
             // 
             // panelSM
@@ -303,6 +309,30 @@
             lblAccount.TabIndex = 1;
             lblAccount.Text = "ACCOUNT";
             // 
+            // flProfile
+            // 
+            flProfile.Name = "flProfile";
+            flProfile.Size = new Size(180, 24);
+            flProfile.Text = "Profile";
+            // 
+            // flAccount
+            // 
+            flAccount.Name = "flAccount";
+            flAccount.Size = new Size(180, 24);
+            flAccount.Text = "Account";
+            // 
+            // fsProfile
+            // 
+            fsProfile.Name = "fsProfile";
+            fsProfile.Size = new Size(180, 24);
+            fsProfile.Text = "Profile";
+            // 
+            // fsAccount
+            // 
+            fsAccount.Name = "fsAccount";
+            fsAccount.Size = new Size(180, 24);
+            fsAccount.Text = "Account";
+            // 
             // StudentManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -362,5 +392,9 @@
         private ToolStripMenuItem aDelete;
         private ToolStripMenuItem adROW;
         private ToolStripMenuItem adCOL;
+        private ToolStripMenuItem flProfile;
+        private ToolStripMenuItem flAccount;
+        private ToolStripMenuItem fsProfile;
+        private ToolStripMenuItem fsAccount;
     }
 }
