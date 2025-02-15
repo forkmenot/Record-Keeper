@@ -32,7 +32,11 @@
             mstrpSM = new MenuStrip();
             filesToolStripMenuItem = new ToolStripMenuItem();
             loadToolStripMenuItem = new ToolStripMenuItem();
+            flProfile = new ToolStripMenuItem();
+            flAccount = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
+            fsProfile = new ToolStripMenuItem();
+            fsAccount = new ToolStripMenuItem();
             panelSM = new Panel();
             spltcPanel = new SplitContainer();
             dgvProfile = new DataGridView();
@@ -40,9 +44,6 @@
             pAdd = new ToolStripMenuItem();
             paROW = new ToolStripMenuItem();
             paCOL = new ToolStripMenuItem();
-            pEdit = new ToolStripMenuItem();
-            peROW = new ToolStripMenuItem();
-            peCOL = new ToolStripMenuItem();
             pDelete = new ToolStripMenuItem();
             pdROW = new ToolStripMenuItem();
             pdCOL = new ToolStripMenuItem();
@@ -52,17 +53,10 @@
             aAdd = new ToolStripMenuItem();
             aaROW = new ToolStripMenuItem();
             aaCOL = new ToolStripMenuItem();
-            aEdit = new ToolStripMenuItem();
-            aeROW = new ToolStripMenuItem();
-            aeCOL = new ToolStripMenuItem();
             aDelete = new ToolStripMenuItem();
             adROW = new ToolStripMenuItem();
             adCOL = new ToolStripMenuItem();
             lblAccount = new Label();
-            flProfile = new ToolStripMenuItem();
-            flAccount = new ToolStripMenuItem();
-            fsProfile = new ToolStripMenuItem();
-            fsAccount = new ToolStripMenuItem();
             mstrpSM.SuspendLayout();
             panelSM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)spltcPanel).BeginInit();
@@ -101,12 +95,38 @@
             loadToolStripMenuItem.Size = new Size(180, 24);
             loadToolStripMenuItem.Text = "Load";
             // 
+            // flProfile
+            // 
+            flProfile.Name = "flProfile";
+            flProfile.Size = new Size(180, 24);
+            flProfile.Text = "Profile";
+            flProfile.Click += flProfile_Click;
+            // 
+            // flAccount
+            // 
+            flAccount.Name = "flAccount";
+            flAccount.Size = new Size(180, 24);
+            flAccount.Text = "Account";
+            flAccount.Click += flAccount_Click;
+            // 
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { fsProfile, fsAccount });
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.Size = new Size(180, 24);
             saveToolStripMenuItem.Text = "Save";
+            // 
+            // fsProfile
+            // 
+            fsProfile.Name = "fsProfile";
+            fsProfile.Size = new Size(123, 24);
+            fsProfile.Text = "Profile";
+            // 
+            // fsAccount
+            // 
+            fsAccount.Name = "fsAccount";
+            fsAccount.Size = new Size(123, 24);
+            fsAccount.Text = "Account";
             // 
             // panelSM
             // 
@@ -141,7 +161,10 @@
             // 
             // dgvProfile
             // 
+            dgvProfile.AllowUserToAddRows = false;
             dgvProfile.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvProfile.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvProfile.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvProfile.BackgroundColor = Color.Wheat;
             dgvProfile.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProfile.ContextMenuStrip = cmsProfle;
@@ -153,9 +176,9 @@
             // cmsProfle
             // 
             cmsProfle.Font = new Font("Arial Narrow", 11.25F);
-            cmsProfle.Items.AddRange(new ToolStripItem[] { pAdd, pEdit, pDelete });
+            cmsProfle.Items.AddRange(new ToolStripItem[] { pAdd, pDelete });
             cmsProfle.Name = "cmsProfle";
-            cmsProfle.Size = new Size(115, 76);
+            cmsProfle.Size = new Size(115, 52);
             // 
             // pAdd
             // 
@@ -169,31 +192,14 @@
             paROW.Name = "paROW";
             paROW.Size = new Size(122, 24);
             paROW.Text = "Row";
+            paROW.Click += paROW_Click;
             // 
             // paCOL
             // 
             paCOL.Name = "paCOL";
             paCOL.Size = new Size(122, 24);
             paCOL.Text = "Column";
-            // 
-            // pEdit
-            // 
-            pEdit.DropDownItems.AddRange(new ToolStripItem[] { peROW, peCOL });
-            pEdit.Name = "pEdit";
-            pEdit.Size = new Size(114, 24);
-            pEdit.Text = "Edit";
-            // 
-            // peROW
-            // 
-            peROW.Name = "peROW";
-            peROW.Size = new Size(122, 24);
-            peROW.Text = "Row";
-            // 
-            // peCOL
-            // 
-            peCOL.Name = "peCOL";
-            peCOL.Size = new Size(122, 24);
-            peCOL.Text = "Column";
+            paCOL.Click += paCOL_Click;
             // 
             // pDelete
             // 
@@ -207,26 +213,31 @@
             pdROW.Name = "pdROW";
             pdROW.Size = new Size(122, 24);
             pdROW.Text = "Row";
+            pdROW.Click += pdROW_Click;
             // 
             // pdCOL
             // 
             pdCOL.Name = "pdCOL";
             pdCOL.Size = new Size(122, 24);
             pdCOL.Text = "Column";
+            pdCOL.Click += pdCOL_Click;
             // 
             // lblProfile
             // 
             lblProfile.AutoSize = true;
             lblProfile.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblProfile.Location = new Point(6, 12);
+            lblProfile.Location = new Point(6, 9);
             lblProfile.Name = "lblProfile";
-            lblProfile.Size = new Size(64, 20);
+            lblProfile.Size = new Size(126, 20);
             lblProfile.TabIndex = 0;
-            lblProfile.Text = "PROFILE";
+            lblProfile.Text = "STUDENT PROFILE";
             // 
             // dgvAccount
             // 
+            dgvAccount.AllowUserToAddRows = false;
             dgvAccount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvAccount.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAccount.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvAccount.BackgroundColor = Color.Wheat;
             dgvAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAccount.ContextMenuStrip = cmsAccount;
@@ -238,9 +249,9 @@
             // cmsAccount
             // 
             cmsAccount.Font = new Font("Arial Narrow", 11.25F);
-            cmsAccount.Items.AddRange(new ToolStripItem[] { aAdd, aEdit, aDelete });
+            cmsAccount.Items.AddRange(new ToolStripItem[] { aAdd, aDelete });
             cmsAccount.Name = "cmsProfle";
-            cmsAccount.Size = new Size(115, 76);
+            cmsAccount.Size = new Size(115, 52);
             // 
             // aAdd
             // 
@@ -254,31 +265,14 @@
             aaROW.Name = "aaROW";
             aaROW.Size = new Size(122, 24);
             aaROW.Text = "Row";
+            aaROW.Click += aaROW_Click;
             // 
             // aaCOL
             // 
             aaCOL.Name = "aaCOL";
             aaCOL.Size = new Size(122, 24);
             aaCOL.Text = "Column";
-            // 
-            // aEdit
-            // 
-            aEdit.DropDownItems.AddRange(new ToolStripItem[] { aeROW, aeCOL });
-            aEdit.Name = "aEdit";
-            aEdit.Size = new Size(114, 24);
-            aEdit.Text = "Edit";
-            // 
-            // aeROW
-            // 
-            aeROW.Name = "aeROW";
-            aeROW.Size = new Size(122, 24);
-            aeROW.Text = "Row";
-            // 
-            // aeCOL
-            // 
-            aeCOL.Name = "aeCOL";
-            aeCOL.Size = new Size(122, 24);
-            aeCOL.Text = "Column";
+            aaCOL.Click += aaCOL_Click;
             // 
             // aDelete
             // 
@@ -292,46 +286,24 @@
             adROW.Name = "adROW";
             adROW.Size = new Size(122, 24);
             adROW.Text = "Row";
+            adROW.Click += adROW_Click;
             // 
             // adCOL
             // 
             adCOL.Name = "adCOL";
             adCOL.Size = new Size(122, 24);
             adCOL.Text = "Column";
+            adCOL.Click += adCOL_Click;
             // 
             // lblAccount
             // 
             lblAccount.AutoSize = true;
             lblAccount.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAccount.Location = new Point(6, 12);
+            lblAccount.Location = new Point(6, 7);
             lblAccount.Name = "lblAccount";
-            lblAccount.Size = new Size(72, 20);
+            lblAccount.Size = new Size(95, 20);
             lblAccount.TabIndex = 1;
-            lblAccount.Text = "ACCOUNT";
-            // 
-            // flProfile
-            // 
-            flProfile.Name = "flProfile";
-            flProfile.Size = new Size(180, 24);
-            flProfile.Text = "Profile";
-            // 
-            // flAccount
-            // 
-            flAccount.Name = "flAccount";
-            flAccount.Size = new Size(180, 24);
-            flAccount.Text = "Account";
-            // 
-            // fsProfile
-            // 
-            fsProfile.Name = "fsProfile";
-            fsProfile.Size = new Size(180, 24);
-            fsProfile.Text = "Profile";
-            // 
-            // fsAccount
-            // 
-            fsAccount.Name = "fsAccount";
-            fsAccount.Size = new Size(180, 24);
-            fsAccount.Text = "Account";
+            lblAccount.Text = "ACCOUNTING";
             // 
             // StudentManagement
             // 
@@ -379,16 +351,10 @@
         private ToolStripMenuItem pDelete;
         private ToolStripMenuItem pdROW;
         private ToolStripMenuItem pdCOL;
-        private ToolStripMenuItem pEdit;
-        private ToolStripMenuItem peROW;
-        private ToolStripMenuItem peCOL;
         private ContextMenuStrip cmsAccount;
         private ToolStripMenuItem aAdd;
         private ToolStripMenuItem aaROW;
         private ToolStripMenuItem aaCOL;
-        private ToolStripMenuItem aEdit;
-        private ToolStripMenuItem aeROW;
-        private ToolStripMenuItem aeCOL;
         private ToolStripMenuItem aDelete;
         private ToolStripMenuItem adROW;
         private ToolStripMenuItem adCOL;
