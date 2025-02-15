@@ -98,15 +98,15 @@
             // flProfile
             // 
             flProfile.Name = "flProfile";
-            flProfile.Size = new Size(180, 24);
-            flProfile.Text = "Profile";
+            flProfile.Size = new Size(158, 24);
+            flProfile.Text = "Student Profile";
             flProfile.Click += flProfile_Click;
             // 
             // flAccount
             // 
             flAccount.Name = "flAccount";
-            flAccount.Size = new Size(180, 24);
-            flAccount.Text = "Account";
+            flAccount.Size = new Size(158, 24);
+            flAccount.Text = "Accounting";
             flAccount.Click += flAccount_Click;
             // 
             // saveToolStripMenuItem
@@ -119,14 +119,16 @@
             // fsProfile
             // 
             fsProfile.Name = "fsProfile";
-            fsProfile.Size = new Size(123, 24);
-            fsProfile.Text = "Profile";
+            fsProfile.Size = new Size(180, 24);
+            fsProfile.Text = "Student Profile";
+            fsProfile.Click += fsProfile_Click;
             // 
             // fsAccount
             // 
             fsAccount.Name = "fsAccount";
-            fsAccount.Size = new Size(123, 24);
-            fsAccount.Text = "Account";
+            fsAccount.Size = new Size(180, 24);
+            fsAccount.Text = "Accounting";
+            fsAccount.Click += fsAccount_Click;
             // 
             // panelSM
             // 

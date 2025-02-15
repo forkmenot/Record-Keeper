@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Media.Effects;
 using GemBox.Spreadsheet;
 using GemBox.Spreadsheet.WinFormsUtilities;
 
@@ -174,7 +175,13 @@ namespace StudentManagement
             {
                 var workbook = ExcelFile.Load(openFileDialog.FileName);
                 var worksheet = workbook.Worksheets.ActiveWorksheet;
-                DataGridViewConverter.ExportToDataGridView(worksheet, dgvProfile, new ExportToDataGridViewOptions() { ColumnHeaders = true });
+
+                profileTable = worksheet.CreateDataTable(new CreateDataTableOptions()
+                {
+                    ColumnHeaders = true
+                });
+
+                dgvProfile.DataSource = profileTable;
             }
         }
 
@@ -194,8 +201,40 @@ namespace StudentManagement
             {
                 var workbook = ExcelFile.Load(openFileDialog.FileName);
                 var worksheet = workbook.Worksheets.ActiveWorksheet;
-                DataGridViewConverter.ExportToDataGridView(worksheet, dgvAccount, new ExportToDataGridViewOptions() { ColumnHeaders = true });
+
+                accountHeaders.Clear();
+                accountTable.Clear();
+                dgvAccount.Rows.Clear();
+                dgvAccount.Columns.Clear();
+
+                foreach (var cell in worksheet.Rows[0].AllocatedCells)
+                {
+                    string headerText = cell.Value?.ToString() ?? "";
+                    accountHeaders.Add(headerText);
+                    dgvAccount.Columns.Add(headerText, headerText);
+                }
+
+                for (int i = 1; i < worksheet.Rows.Count; i++)
+                {
+                    List<string> rowData = new List<string>();
+                    foreach (var cell in worksheet.Rows[i].AllocatedCells)
+                    {
+                        rowData.Add(cell.Value?.ToString() ?? "");
+                    }
+                    accountTable.Add(rowData);
+                    dgvAccount.Rows.Add(rowData.ToArray());
+                }
             }
+        }
+
+        private void fsProfile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fsAccount_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
