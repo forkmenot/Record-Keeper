@@ -167,7 +167,7 @@
             dgvProfile.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvProfile.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvProfile.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvProfile.BackgroundColor = Color.Wheat;
+            dgvProfile.BackgroundColor = Color.AntiqueWhite;
             dgvProfile.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProfile.ContextMenuStrip = cmsProfle;
             dgvProfile.Location = new Point(3, 35);
@@ -240,7 +240,7 @@
             dgvAccount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvAccount.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvAccount.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvAccount.BackgroundColor = Color.Wheat;
+            dgvAccount.BackgroundColor = Color.AntiqueWhite;
             dgvAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAccount.ContextMenuStrip = cmsAccount;
             dgvAccount.Location = new Point(3, 33);
